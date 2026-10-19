@@ -42,7 +42,7 @@ Maronga, B., Gryschka, M., Heinze, R., Hoffmann, F., Kanani-Sühring, F., Keck, 
 - `submit_train_sweep`: jobscript for training
 - `generalisation_profiles.py`: calculation of QNN performance profiles on unseem LES
 - `submit_gen_profiles`: jobscript for profiles
-- 
+  
 ### Libs `libs/`)
 - `dataloading.py`: loading and preprocessing data
 - `PALMruns_overview.txt`: table of the LES experiments with prescribed parameters and save names
