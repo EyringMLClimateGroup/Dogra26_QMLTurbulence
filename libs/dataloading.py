@@ -1,3 +1,6 @@
+### Lena Dogra, October 2026
+### functions for loading and preprocessing the coarse-grained LES data on which our data-driven parameterizations are trained
+
 import pandas as pd
 import numpy as np
 import jax

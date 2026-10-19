@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH --job-name=profiles
+#SBATCH --partition=compute
+#SBATCH --account=bd1179
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=256G
+#SBATCH --time=4:00:00
+#SBATCH --output=profiles_%j.out
+
+source /sw/spack-levante/jupyterhub/jupyterhub/etc/profile.d/conda.sh
+conda activate qml_geo_env
+
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+
+cd /home/b/b309252/turbulence-parameterization-palm/scripts/
+
+python generalisation_profiles.py --n-jobs "$SLURM_CPUS_PER_TASK"

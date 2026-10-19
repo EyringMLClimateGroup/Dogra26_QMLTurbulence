@@ -1,3 +1,7 @@
+### Lena Dogra, October 2026
+### class for parameterized quantum circuits with different ansätze
+### based on Strongly Entangling Layers, implemented with pennylane
+
 import pennylane as qml
 import numpy as np
 

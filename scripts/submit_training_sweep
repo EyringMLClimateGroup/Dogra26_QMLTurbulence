@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --job-name=qnn-sweep
+#SBATCH --partition=compute
+#SBATCH --account=bd1179
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=256G
+#SBATCH --time=8:00:00
+#SBATCH --output=qnn_sweep_%j.out
+
+source /sw/spack-levante/jupyterhub/jupyterhub/etc/profile.d/conda.sh
+conda activate qml_geo_env
+
+# keep per-worker thread pools from oversubscribing the node
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+
+# relative paths resolve from the cwd, so pin the project dir
+cd /home/b/b309252/turbulence-parameterization-palm/scripts/
+
+python train_sweep.py --n-qubits 2 --enc-angles XYZ --n-jobs "$SLURM_CPUS_PER_TASK"

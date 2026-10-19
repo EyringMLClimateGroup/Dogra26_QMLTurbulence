@@ -1,3 +1,5 @@
+### Lena Dogra, October 2026
+
 import matplotlib.colors as mcolors
 import numpy as np
 

@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH --job-name=shap-sweep
+#SBATCH --partition=compute
+#SBATCH --account=bd1179
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=256G
+#SBATCH --time=4:00:00
+#SBATCH --output=shap_sweep_%j.out
+
+source /sw/spack-levante/jupyterhub/jupyterhub/etc/profile.d/conda.sh
+conda activate qml_geo_env        # or: /home/b/b309252/.conda/envs/qml_geo_env/bin/python
+
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+
+cd /home/b/b309252/turbulence-parameterization-palm/scripts/
+
+python shap_sweep.py --n-jobs "$SLURM_CPUS_PER_TASK"
